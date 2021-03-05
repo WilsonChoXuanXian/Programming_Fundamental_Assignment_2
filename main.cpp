@@ -30,6 +30,10 @@ Phone of Student #3: 011-11277520
 #include <cctype> // for toupper
 #include <ctime> //for time() in srand( time(NULL) );
 #include <windows.h> //for Sleep()
+#define RESET   "\033[0m"   // to reset the colour
+#define BLUE    "\033[34m"      /* Blue */
+#define MAGENTA "\033[35m"      /* Magenta */
+#define CYAN    "\033[36m"      /* Cyan */
 
 using namespace std;
 
@@ -195,7 +199,7 @@ void printLetter(char matrix[][128], int size, int time){
         for (int i=0;i<sz;i++)
         {
             for (int j=0; j<128; j++)
-                cout << matrix[i][j];
+                cout << MAGENTA << matrix[i][j];
             cout << endl;
         }
         shiftLetter(matrix);
@@ -390,7 +394,7 @@ bool playAgn()
     bool TorF = false;
     char YESorNO;
 
-    cout << "Do you want to PLAY AGAIN ?  (y/n)" << endl;
+    cout << "Do you want to PLAY AGAIN (y/n) ? => ";
     cin >> YESorNO;
 
     if (YESorNO == 'y'||YESorNO == 'Y')
@@ -408,14 +412,14 @@ int main()
     char welcome[sz][128];    // 80 for the letters and 48 for spaces
 
     printLetter(welcome,numOfWords,tm);
-    cout << endl;
+    cout << RESET << endl;
     system("pause");
 
-    system("cls");
     bool playAgain = false;
 
     do
     {
+        system("cls");
         srand( time(NULL) ); // different map each time the program is run
         // srand( 1 );       // start with seed number 1, can be any other number
 
@@ -425,8 +429,12 @@ int main()
 
     } while(playAgain);
 
-    cout << "\nExiting from Mars....\n";
-    cout << "Thank you for playing with rover :) \n";
+    cout << "\nDeparting from MARS... \n\n";
+    cout <<         " ---------------------------\n"; 
+    cout << CYAN << "      T H A N K   Y O U   \n";
+    cout << BLUE << "            A N D \n";
+    cout << CYAN << "        G O O D B Y E    \n" << RESET;
+    cout <<         " ---------------------------";
 
     return 0;
 }

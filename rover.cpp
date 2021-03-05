@@ -125,9 +125,11 @@ void Rover::move(Mars& mars)
     }
 }
 
-void Rover::generateGolds(Mars& mars,int golds){
+void Rover::generateGolds(Mars& mars,int golds)
+{
     land(mars);
     int gold_generated = 0;
+    int counter = 0;
 
     do{
         int action = rand() % 15;
@@ -250,7 +252,17 @@ void Rover::generateGolds(Mars& mars,int golds){
             }
         }
 
-    }while(gold_generated < golds);
+        counter += 1;
+        if (counter == 30000000)
+        {
+            cout << endl << endl
+                 << "No. of golds [G] that you entered is too large to fix in the map !!!" << endl;
+            cout << " * Program will be terminated * " << endl << endl;
+            system("pause");
+            exit(0);
+        }
+
+    } while(gold_generated < golds);
 }
 
 void Rover::displayMapper(Mars& mars)
