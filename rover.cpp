@@ -253,7 +253,7 @@ void Rover::generateGolds(Mars& mars,int golds)
         }
 
         counter += 1;
-        if (counter == 30000000)
+        if (counter == 9000000)
         {
             cout << endl << endl
                  << "No. of golds [G] that you entered is too large to fix in the map !!!" << endl;
