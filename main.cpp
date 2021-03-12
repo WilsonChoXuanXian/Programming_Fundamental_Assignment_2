@@ -426,8 +426,7 @@ int main()
     do
     {
         system("cls");
-        srand( time(NULL) ); // different map each time the program is run
-        // srand( 1 );       // start with seed number 1, can be any other number
+        srand( time(NULL) );
 
         marsRover();
 
