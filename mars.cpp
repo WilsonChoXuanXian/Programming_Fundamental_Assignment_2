@@ -33,7 +33,10 @@ void Mars::resize()
         for (int j=0; j<dimX; ++j)
         {
             int objNo = rand() % noOfObjects;
-            map[i][j] = objects[ objNo ];
+            if(!isMidOfMap(i,j))
+                map[i][j] = objects[ objNo ];
+            else
+                map[i][j] = ' ';
             displayMap[i][j] = '?';
         }
     }
