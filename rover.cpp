@@ -20,17 +20,9 @@ void Rover::land(Mars& mars)
 {
     char possibleHeading[] = {'^', '>', '<', 'v'};
 
-    x = mars.getDimX();
-    if(x%2 == 1)
-        x = x/2 + 1;
-    else
-        x = x/2;
+    x = (mars.getDimX() + 1) / 2;
 
-    y = mars.getDimY();
-    if(y%2 == 1)
-        y = y/2 + 1;
-    else
-        y = y/2;
+    y = (mars.getDimY() + 1) / 2;
     
     heading = possibleHeading[ rand() % 4 ];
     mars.setObjectDisplay(x,y,heading);

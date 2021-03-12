@@ -197,17 +197,9 @@ bool Mars::isInsideMap(int x, int y)
 
 bool Mars::isMidOfMap(int a, int b)
 {
-    int x = getDimX();
-    if(x%2 == 1)
-        x = x/2 + 1;
-    else
-        x = x/2;
+    int x = (getDimX() + 1) / 2;
 
-    int y = getDimY();
-    if(y%2 == 1)
-        y = y/2 + 1;
-    else
-        y = y/2;
+    int y = (getDimY() + 1) / 2;
 
     if (a == x && b == y)
           return true;
