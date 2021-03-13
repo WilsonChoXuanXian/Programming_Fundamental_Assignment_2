@@ -21,18 +21,20 @@ Phone of Student #3: 011-11277520
 #include "Mars.h"
 #include "Rover.h"
 #include <iostream>
-#include <iomanip>          //for setw()
+#include <iomanip>          // for setw()
 #include <cstdlib>
 #include <string>
 #include <vector>
 #include <thread>
 #include <chrono>
-#include <ctime>            //for time() in srand( time(NULL) );
-#include <windows.h>        //for Sleep()
+#include <ctime>            // for time() in srand( time(NULL) );
+#include <windows.h>        // for Sleep()
 #define RESET   "\033[0m"   // to reset the colour
-#define BLUE    "\033[34m"      /* Blue */
-#define MAGENTA "\033[35m"      /* Magenta */
-#define CYAN    "\033[36m"      /* Cyan */
+#define BLUE    "\033[34m"  // Blue 
+#define MAGENTA "\033[35m"  // Magenta 
+#define CYAN    "\033[36m"  // Cyan 
+#define RED     "\033[31m"  // Red  
+#define YELLOW  "\033[33m"  // Yellow 
 
 using namespace std;
 
@@ -210,9 +212,12 @@ void printLetter(char matrix[][128], int size, int time){
 void printInstructions()
 {
     char hill = 178;
-    cout << "Mission : Get all the GOLDs and do not fall in TRAPs !!!" << endl;
-    cout << "L = Turn Left ; R = Turn Right ; M = Move ; Q = Quit " << endl;
-    cout << "$ = Gold[G] ; " << hill << " = Hills ; # = Trap " << endl << endl;
+    cout << "------------------------------------------------------------\n";
+    cout << "| Mission : Get all the GOLDs and do not fall in TRAPs !!! |" << endl;
+    cout << "|----------------------------------------------------------|\n";
+    cout << "| L = Turn Left ; R = Turn Right ; M = Move ; Q = Quit     |" << endl;
+    cout << "| $ = Gold[G] ; " << hill << " = Hills ; # = Trap"<< setw(24) << "|" << endl;
+    cout << "------------------------------------------------------------\n\n";
 }
 
 bool showMap()
@@ -344,7 +349,7 @@ void marsRover()
                 case 'Q':
                 {
                     mars.display();
-                    cout << "Quitted!! Mission Failed!!!" << endl;
+                    cout << "Quitted!! Mission Failed!!!" << endl << endl;
                 }
                 break;
                 default :
@@ -397,8 +402,9 @@ bool playAgn()
     bool TorF = false;
     string YESorNO;
 
-    do{
-    cout << "Do you want to PLAY AGAIN ?  (y/n)" << endl;
+    do
+    {
+    cout << "Do you want to PLAY AGAIN (y/n) ? => ";
     cin >> YESorNO;
     }while(YESorNO != "y" && YESorNO != "Y" &&
            YESorNO != "n" && YESorNO != "N" );

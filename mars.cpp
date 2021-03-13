@@ -7,6 +7,9 @@
 #include <chrono>
 #include <ctime> //for time() in srand( time(NULL) );
 #include <windows.h> //for Sleep()
+#define RESET   "\033[0m"   // to reset the colour
+#define RED     "\033[31m"  // Red  
+#define YELLOW  "\033[33m"  // Yellow 
 using namespace std;
 
 void Mars::resize()
@@ -46,37 +49,37 @@ void Mars::display()
 {
     system("cls");
     char hill = 178;
-    cout << " --__--__--__--__--__--__--__--_" << endl;
-    cout << " = Curiosity, welcome to Mars! =" << endl;
-    cout << " __--__--__--__--__--__--__--__-" << endl;
+    cout << YELLOW << " --__--__--__--__--__--__--__--_" << endl;
+    cout << " =" << RESET << " Curiosity, welcome to Mars!" << YELLOW << " =" << endl;
+    cout << " __--__--__--__--__--__--__--__-" << RESET << endl;
 
     for (int i=0; i<dimY; ++i)
     {
         cout << "  ";
         for (int j=0; j<dimX; ++j)
         {
-            cout << "+-";
+            cout << RED << "+-";
         }
-        cout << "+" << endl;
+        cout << "+" << RESET << endl;
         cout << setw(2) << (dimY-i);
         for (int j=0; j<dimX; ++j)
         {
-            cout << "|";
+            cout << RED << "|" << RESET;
 
             if ( displayMap[i][j] == 'X')
                 cout << hill;
             else 
                 cout << displayMap[i][j];
         }
-        cout << "|" << endl;
+        cout << RED << "|" << RESET << endl;
     }
 
     cout << "  ";
     for (int j=0; j<dimX; ++j)
     {
-        cout << "+-";
+        cout << RED << "+-";
     }
-    cout << "+" << endl;
+    cout << "+" << RESET << endl;
 
     cout << "  ";
     for (int j=0; j<dimX; ++j)
@@ -101,37 +104,37 @@ void Mars::display()
 void Mars::displayTreassure()
 {
     char hill = 178;
-    cout << " --__--__--__--__--__--__--__--_" << endl;
-    cout << " = Curiosity, welcome to Mars! =" << endl;
-    cout << " __--__--__--__--__--__--__--__-" << endl;
+    cout << YELLOW << " --__--__--__--__--__--__--__--_" << endl;
+    cout << " =" << RESET << " Curiosity, welcome to Mars! " << YELLOW << "=" << endl;
+    cout << " __--__--__--__--__--__--__--__-" << RESET << endl;
 
     for (int i=0; i<dimY; ++i)
     {
         cout << "  ";
         for (int j=0; j<dimX; ++j)
         {
-            cout << "+-";
+            cout << RED << "+-";
         }
-        cout << "+" << endl;
+        cout << "+" << RESET << endl;
         cout << setw(2) << (dimY-i);
         for (int j=0; j<dimX; ++j)
         {
-            cout << "|" ;
+            cout << RED << "|" << RESET;
 
             if ( map[i][j] == 'X')
                 cout << hill;
             else 
                 cout << map[i][j];
         }
-        cout << "|" << endl;
+        cout << RED << "|" << RESET << endl;
     }
 
     cout << "  ";
     for (int j=0; j<dimX; ++j)
     {
-        cout << "+-";
+        cout << RED << "+-";
     }
-    cout << "+" << endl;
+    cout << RED <<  "+" << RESET << endl;
 
     cout << "  ";
     for (int j=0; j<dimX; ++j)
