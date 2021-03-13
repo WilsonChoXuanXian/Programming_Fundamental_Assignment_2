@@ -21,15 +21,14 @@ Phone of Student #3: 011-11277520
 #include "Mars.h"
 #include "Rover.h"
 #include <iostream>
-#include <iomanip> //for setw()
+#include <iomanip>          //for setw()
 #include <cstdlib>
 #include <string>
 #include <vector>
 #include <thread>
 #include <chrono>
-#include <cctype> // for toupper
-#include <ctime> //for time() in srand( time(NULL) );
-#include <windows.h> //for Sleep()
+#include <ctime>            //for time() in srand( time(NULL) );
+#include <windows.h>        //for Sleep()
 #define RESET   "\033[0m"   // to reset the colour
 #define BLUE    "\033[34m"      /* Blue */
 #define MAGENTA "\033[35m"      /* Magenta */
@@ -219,14 +218,18 @@ void printInstructions()
 bool showMap()
 {
     bool T_F = false;
-    char YESorNO, y_n;
+    string YESorNO;
 
+    do{
     cout << "Do you want to see the Map of Mars? (y/n) => ";
     cin >> YESorNO;
+    }while(YESorNO != "y" && YESorNO != "Y" &&
+           YESorNO != "n" && YESorNO != "N" );
 
-    y_n = toupper(YESorNO);
-    if ( y_n == 'Y') T_F = true;
-    else if (y_n == 'N') T_F = false;
+    if ( YESorNO == "y" || YESorNO == "Y")
+        T_F = true;
+    else 
+        T_F = false;
     
     return T_F;
 }
@@ -392,12 +395,15 @@ bool playAgn()
 {
 
     bool TorF = false;
-    char YESorNO;
+    string YESorNO;
 
-    cout << "Do you want to PLAY AGAIN (y/n) ? => ";
+    do{
+    cout << "Do you want to PLAY AGAIN ?  (y/n)" << endl;
     cin >> YESorNO;
+    }while(YESorNO != "y" && YESorNO != "Y" &&
+           YESorNO != "n" && YESorNO != "N" );
 
-    if (YESorNO == 'y'||YESorNO == 'Y')
+    if (YESorNO == "y" || YESorNO == "Y")
         TorF = true;
     else
         TorF = false;
@@ -420,8 +426,7 @@ int main()
     do
     {
         system("cls");
-        srand( time(NULL) ); // different map each time the program is run
-        // srand( 1 );       // start with seed number 1, can be any other number
+        srand( time(NULL) );
 
         marsRover();
 

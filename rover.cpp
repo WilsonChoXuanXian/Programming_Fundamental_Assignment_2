@@ -20,17 +20,9 @@ void Rover::land(Mars& mars)
 {
     char possibleHeading[] = {'^', '>', '<', 'v'};
 
-    x = mars.getDimX();
-    if(x%2 == 1)
-        x = x/2 + 1;
-    else
-        x = x/2;
+    x = (mars.getDimX() + 1) / 2;
 
-    y = mars.getDimY();
-    if(y%2 == 1)
-        y = y/2 + 1;
-    else
-        y = y/2;
+    y = (mars.getDimY() + 1) / 2;
     
     heading = possibleHeading[ rand() % 4 ];
     mars.setObjectDisplay(x,y,heading);
@@ -253,7 +245,7 @@ void Rover::generateGolds(Mars& mars,int golds)
         }
 
         counter += 1;
-        if (counter == 30000000)
+        if (counter == 9000000)
         {
             cout << endl << endl
                  << "No. of golds [G] that you entered is too large to fix in the map !!!" << endl;
