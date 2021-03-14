@@ -349,6 +349,12 @@ void marsRover()
                 case 'Q':
                 {
                     mars.display();
+                    printInstructions();
+
+                    cout << "Total Command Sequences [S] = " << total_Com_Seq << endl;
+                    cout << "Total Commands [C] = " << total_Com << endl;
+                    cout << "Total Golds [G] = " << golds_found << " out of " << total_num_golds << endl;
+                    cout << "Total Score = [G] x 50 - [S] x 5 - [C] x 1 = " << total_Score << endl << endl;
                     cout << "Quitted!! Mission Failed!!!" << endl << endl;
                 }
                 break;
@@ -440,12 +446,15 @@ int main()
 
     } while(playAgain);
 
-    cout << "\nDeparting from MARS... \n\n";
-    cout <<         " ---------------------------\n"; 
-    cout << CYAN << "      T H A N K   Y O U   \n";
-    cout << BLUE << "            A N D \n";
-    cout << CYAN << "        G O O D B Y E    \n" << RESET;
-    cout <<         " ---------------------------";
+    cout <<          "\n ---------------------------\n";
+    cout << BLUE  << "   Departing from MARS... \n";
+    cout << RESET << " ---------------------------\n"; 
+    cout << CYAN  << "      T H A N K   Y O U   \n";
+    cout << BLUE  << "            A N D \n";
+    cout << CYAN  << "        G O O D B Y E    \n";
+    cout << RESET << " ---------------------------";
+
+    Sleep(3000);
 
     return 0;
 }
