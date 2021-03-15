@@ -26,8 +26,10 @@ class Rover
 
         void land(Mars& mars);
         void turnLeft(Mars& mars);
+        void turnLeftWOsetObject(Mars& mars);
         void move(Mars& mars);
         void turnRight(Mars& mars);
+        void turnRightWOsetObject(Mars& mars);
         void generateGolds(Mars& mars,int);
         void displayMapper(Mars& mars);
 

@@ -42,6 +42,18 @@ void Rover::turnLeft(Mars& mars)
     mars.setObjectDisplay(x,y,heading);
 }
 
+void Rover::turnLeftWOsetObject(Mars& mars)
+{
+    if(heading == '^')
+        heading = '<';
+    else if(heading == '>')
+        heading = '^';
+    else if(heading == '<')
+        heading = 'v';
+    else if(heading == 'v')
+        heading = '>';
+}
+
 void Rover::turnRight(Mars& mars)
 {
     if(heading == '^')
@@ -54,6 +66,18 @@ void Rover::turnRight(Mars& mars)
         heading = '<';
 
     mars.setObjectDisplay(x,y,heading);
+}
+
+void Rover::turnRightWOsetObject(Mars& mars)
+{
+    if(heading == '^')
+        heading = '>';
+    else if(heading == '>')
+        heading = 'v';
+    else if(heading == '<')
+        heading = '^';
+    else if(heading == 'v')
+        heading = '<';
 }
 
 void Rover::move(Mars& mars)
@@ -126,26 +150,10 @@ void Rover::generateGolds(Mars& mars,int golds)
     do{
         int action = rand() % 15;
 
-        if(action <= 1){
-            if(heading == '^')
-                heading = '<';
-            else if(heading == '>')
-                heading = '^';
-            else if(heading == '<')
-                heading = 'v';
-            else if(heading == 'v')
-                heading = '>';
-        }
-        else if(action <= 3){
-            if(heading == '^')
-                heading = '>';
-            else if(heading == '>')
-                heading = 'v';
-            else if(heading == '<')
-                heading = '^';
-            else if(heading == 'v')
-                heading = '<';
-        }
+        if(action <= 1)
+            turnLeftWOsetObject(mars);
+        else if(action <= 3)
+            turnRightWOsetObject(mars);
         else{
             int turn = rand()%2;
             int drop_gold = rand()%10;
