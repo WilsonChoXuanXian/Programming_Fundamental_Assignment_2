@@ -220,6 +220,33 @@ void printInstructions()
     cout << "------------------------------------------------------------\n\n";
 }
 
+void userSetting(int& x, int& y, int& golds)
+{
+    cout << "Please input values of x for coloumns and y for rows of the map. \n";
+    cout << "Lets Explore Mars....\n";
+    cout << "Mars dimension X => ";
+    cin >> x;
+    cout << "Mars dimemsion Y => ";
+    cin >> y;
+    cout << "No. of golds => ";
+    cin >> golds;
+}
+
+void printScoreBoard(int& Com_Seq, int& commands, int& golds_found, int& total_golds, int& total_Score)
+{
+    cout << "Total Command Sequences [S] = " << Com_Seq << endl;
+    cout << "Total Commands [C] = " << commands << endl;
+    cout << "Total Golds [G] = " << golds_found << " out of " << total_golds << endl;
+    cout << "Total Score = [G] x 50 - [S] x 5 - [C] x 1 = " << total_Score << endl;
+}
+
+void getCommand(string& command)
+{
+    cout << "\nExample Command Sequences: MMLLRMMRMLQ\n";
+    cout << "Enter command sequences => ";
+    cin >> command;
+}
+
 bool showMap()
 {
     bool T_F = false;
@@ -246,15 +273,7 @@ void marsRover()
     bool showTreassure = false;
     int total_Com_Seq = 0, total_Com = 0, golds_found = 0, total_Score = 0;
 
-    
-    cout << "Please input values of x for coloumns and y for rows of the map. \n";
-    cout << "Lets Explore Mars....\n";
-    cout << "Mars dimension X => ";
-    cin >> x;
-    cout << "Mars dimemsion Y => ";
-    cin >> y;
-    cout << "No. of golds => ";
-    cin >> total_num_golds;
+    userSetting(x,y,total_num_golds);
 
     Mars mars(x,y);
     mars.resize();
@@ -262,7 +281,6 @@ void marsRover()
     Rover explore;
 
     explore.generateGolds(mars,total_num_golds);
-
     explore.land(mars);
     explore.displayMapper(mars);
 
@@ -277,15 +295,8 @@ void marsRover()
         mars.display();
         printInstructions();
         total_Score = (golds_found * 50) - (total_Com_Seq * 5) - (total_Com * 1);
-
-        cout << "Total Command Sequences [S] = " << total_Com_Seq << endl;
-        cout << "Total Commands [C] = " << total_Com << endl;
-        cout << "Total Golds [G] = " << golds_found << " out of " << total_num_golds << endl;
-        cout << "Total Score = [G] x 50 - [S] x 5 - [C] x 1 = " << total_Score << endl;
-
-        cout << "\nExample Command Sequences: MMLLRMMRMLQ\n";
-        cout << "Enter command sequences => ";
-        cin >> command;
+        printScoreBoard(total_Com_Seq, total_Com, golds_found, total_num_golds, total_Score);
+        getCommand(command);
 
         for(int i=0;i<command.length();i++)
         {
@@ -307,11 +318,7 @@ void marsRover()
                         mars.display();
 
                         printInstructions();
-
-                        cout << "Total Command Sequences [S] = " << total_Com_Seq << endl;
-                        cout << "Total Commands [C] = " << total_Com << endl;
-                        cout << "Total Golds [G] = " << golds_found << " out of " << total_num_golds << endl;
-                        cout << "Total Score = [G] x 50 - [S] x 5 - [C] x 1 = " << total_Score << endl;
+                        printScoreBoard(total_Com_Seq, total_Com, golds_found, total_num_golds, total_Score);
                         cout << "\nROVER IS TRAPPED !!! Mission Failed !!!" << endl << endl;
                         break;
                     }
@@ -350,12 +357,9 @@ void marsRover()
                 {
                     mars.display();
                     printInstructions();
-
-                    cout << "Total Command Sequences [S] = " << total_Com_Seq << endl;
-                    cout << "Total Commands [C] = " << total_Com << endl;
-                    cout << "Total Golds [G] = " << golds_found << " out of " << total_num_golds << endl;
-                    cout << "Total Score = [G] x 50 - [S] x 5 - [C] x 1 = " << total_Score << endl << endl;
-                    cout << "Quitted!! Mission Failed!!!" << endl << endl;
+                    printScoreBoard(total_Com_Seq, total_Com, golds_found, total_num_golds, total_Score);
+                    cout << endl
+                         << "Quitted!! Mission Failed!!!" << endl << endl;
                 }
                 break;
                 default :
@@ -378,18 +382,12 @@ void marsRover()
             explore.displayMapper(mars);
             mars.display();
 
-            printInstructions();
-
-            cout << "Total Command Sequences [S] = " << total_Com_Seq << endl;
-            cout << "Total Commands [C] = " << total_Com << endl;
-            cout << "Total Golds [G] = " << golds_found << " out of " << total_num_golds << endl;
             total_Score = (golds_found * 50) - (total_Com_Seq * 5) - (total_Com * 1);
-            cout << "Total Score = [G] x 50 - [S] x 5 - [C] x 1 = " << total_Score << endl;
+            printInstructions();
+            printScoreBoard(total_Com_Seq, total_Com, golds_found, total_num_golds, total_Score);
             cout << "\nCongratz, Mission ACCOMPLISHED!!" << endl << endl;
             break;
-
         }
-        
 
     } while (c != 'Q' && c != 'q');
 
@@ -399,7 +397,6 @@ void marsRover()
         cout << endl;
         mars.displayTreassure();
     }
-
 }
 
 bool playAgn()
