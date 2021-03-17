@@ -3,7 +3,7 @@ Course : TCP1101 Programming Fundamentals
 Session: Trimester 2, 2020/21
 Assignment: 2
 Lecture Section : TC1V
-Tutorial Section: TT1L
+Tutorial Section: TT1V
 Name of Student #1 : CHO XUAN XIAN
 ID of Student #1 : 1201302646
 Email of Student #1: 1201302646@student.mmu.edu.my
